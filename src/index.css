@@ -1,0 +1,79 @@
+@layer Reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+  #root {
+    isolation: isolate;
+  }
+  button {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+  }
+
+  input {
+    border: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+}
+
+@font-face {
+  font-family: "Mouse Memoirs";
+  src: url("/fonts/MouseMemoirs-Regular.ttf") format("truetype");
+}
+
+body {
+  font-family: "Mouse Memoirs", sans-serif;
+  max-height: 100vh;
+}
+
+#app {
+  height: 100vh;
+  background-image: url("/images/background-mobile.svg");
+  background-size: cover;
+  background-position: center;
+
+  @media (width >= 768px) {
+    background-image: url("/images/background-tablet.svg");
+  }
+
+  @media (width >= 1024px) {
+    background-image: url("/images/background-desktop.svg");
+  }
+}
