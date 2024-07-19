@@ -1,5 +1,6 @@
 import { render } from "preact"
-import { App } from "./app.tsx"
 import "./index.css"
+import { RouterProvider } from "react-router-dom"
+import { router } from "./router.tsx"
 
-render(<App />, document.getElementById("app")!)
+render(<RouterProvider router={router} />, document.getElementById("app")!)
