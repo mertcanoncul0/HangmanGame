@@ -1,42 +1,34 @@
-import { HeaderAndBackButton } from "../components/back-button"
+import { Link } from "react-router-dom"
+import { data, LanguageCode } from "../data"
+import { useLanguageStore } from "../store/language"
 
 export function HowToPlay() {
+  const language = useLanguageStore((state) => state.language) as LanguageCode
+
   return (
     <>
-      <HeaderAndBackButton backHref='/' title='How to play' />
-      <main>
-        <section>
-          <h2>
-            <span>01</span>
-            Choose a category
-          </h2>
-          <p>
-            First, choose a word category, like animals or movies. The computer
-            then randomly selects a secret word from that topic and shows you
-            blanks for each letter of the word.
-          </p>
-        </section>
-        <section>
-          <h2>
-            <span>02</span>Guess letters
-          </h2>
-          <p>
-            Take turns guessing letters. The computer fills in the relevant
-            blank spaces if your guess is correct. If it’s wrong, you lose some
-            health, which empties after eight incorrect guesses.
-          </p>
-        </section>
-        <section>
-          <h2>
-            <span>03</span>
-            Win or lose
-          </h2>
-          <p>
-            You win by guessing all the letters in the word before your health
-            runs out. If the health bar empties before you guess the word, you
-            lose.
-          </p>
-        </section>
+      <header className="back-header">
+        <Link to="/" className="back-button" aria-label="Back">
+          <img
+            src="/images/icon-back.svg"
+            alt="Back button"
+            width={17}
+            height={16}
+          />
+        </Link>
+
+        <img src="/images/how-to-play.svg" alt="" />
+      </header>
+      <main className="page-wrapper">
+        {data[language].howToPlay.map((item) => (
+          <section className="how-to-play-card" key={item.code}>
+            <h2>
+              <span>{item.code}</span>
+              {item.title}
+            </h2>
+            <p>{item.body}</p>
+          </section>
+        ))}
       </main>
     </>
   )

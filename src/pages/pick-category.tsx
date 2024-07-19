@@ -1,9 +1,26 @@
-import { HeaderAndBackButton } from "../components/back-button"
+import { Link } from "react-router-dom"
 
 export function PickCategory() {
   return (
     <>
-      <HeaderAndBackButton backHref='/' title='Pick a Category' />
+      <header className='back-header'>
+        <Link to='/' className='back-button' aria-label='Back'>
+          <img
+            src='/images/icon-back.svg'
+            alt='Back button'
+            width={17}
+            height={16}
+          />
+        </Link>
+
+        <img
+          src='/images/how-to-play.svg'
+          alt='How To Play'
+          title='How To Play'
+          width={185}
+          height={58}
+        />
+      </header>
       <main>
         <section>
           <h2>
