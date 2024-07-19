@@ -6,23 +6,58 @@ export type LanguageData = {
     button: string
   }
 
-  howToPlay: [
-    {
-      title: string
-      code: string
-      body: string
-    },
-    {
-      title: string
-      code: string
-      body: string
-    },
-    {
-      title: string
-      code: string
-      body: string
-    }
-  ]
+  howToPlay: {
+    cards: [
+      {
+        title: string
+        code: string
+        body: string
+      },
+      {
+        title: string
+        code: string
+        body: string
+      },
+      {
+        title: string
+        code: string
+        body: string
+      }
+    ]
+    titleImgPath: string
+    title: string
+  }
+
+  pickCategory: {
+    categories: [
+      {
+        name: string
+        slug: string
+      },
+      {
+        name: string
+        slug: string
+      },
+      {
+        name: string
+        slug: string
+      },
+      {
+        name: string
+        slug: string
+      },
+      {
+        name: string
+        slug: string
+      },
+      {
+        name: string
+        slug: string
+      }
+    ]
+    titleImgPath: string
+    title: string
+  }
 }
 
 export const data: { [key in LanguageCode]: LanguageData } = {
@@ -31,45 +66,113 @@ export const data: { [key in LanguageCode]: LanguageData } = {
       title: "Which language do you want to play in?",
       button: "How to Play",
     },
-    howToPlay: [
-      {
-        code: "01",
-        title: "Choose a category",
-        body: "First, choose a word category, like animals or movies. The computer then randomly selects a secret word from that topic and shows you blanks for each letter of the word.",
-      },
-      {
-        title: "Guess letters",
-        code: "02",
-        body: "Take turns guessing letters. The computer fills in the relevant blank spaces if your guess is correct. If it’s wrong, you lose some health, which empties after eight incorrect guesses.",
-      },
-      {
-        title: "Win or lose",
-        code: "03",
-        body: "You win by guessing all the letters in the word before your health runs out. If the health bar empties before you guess the word, you lose.",
-      },
-    ],
+    howToPlay: {
+      cards: [
+        {
+          code: "01",
+          title: "Choose a category",
+          body: "First, choose a word category, like animals or movies. The computer then randomly selects a secret word from that topic and shows you blanks for each letter of the word.",
+        },
+        {
+          title: "Guess letters",
+          code: "02",
+          body: "Take turns guessing letters. The computer fills in the relevant blank spaces if your guess is correct. If it’s wrong, you lose some health, which empties after eight incorrect guesses.",
+        },
+        {
+          title: "Win or lose",
+          code: "03",
+          body: "You win by guessing all the letters in the word before your health runs out. If the health bar empties before you guess the word, you lose.",
+        },
+      ],
+      titleImgPath: "/images/how-to-play.svg",
+      title: "How to Play",
+    },
+    pickCategory: {
+      categories: [
+        {
+          name: "MOVIES",
+          slug: "movies",
+        },
+        {
+          name: "TV SHOWS",
+          slug: "tv-shows",
+        },
+        {
+          name: "COUNTRIES",
+          slug: "countries",
+        },
+        {
+          name: "CAPITAL CITIES",
+          slug: "capital-cities",
+        },
+        {
+          name: "ANIMALS",
+          slug: "animals",
+        },
+        {
+          name: "SPORTS",
+          slug: "sports",
+        },
+      ],
+      titleImgPath: "/images/pick-a-category.svg",
+      title: "Pick a Category",
+    },
   },
   tr: {
     home: {
       title: "Hangi dilde oynamak istersiniz?",
       button: "Nasıl Oynanır",
     },
-    howToPlay: [
-      {
-        code: "01",
-        title: "Bir kategori seçin",
-        body: "İlk olarak, hayvanlar veya filmler gibi bir kelime kategorisi seçin. Bilgisayar daha sonra bu konudan rastgele gizli bir kelime seçer ve kelimenin her harfi için size boşluklar gösterir.",
-      },
-      {
-        code: "02",
-        title: "Harfleri tahmin et",
-        body: "Sırayla harfleri tahmin edin. Tahmininiz doğruysa bilgisayar ilgili boşlukları doldurur. Yanlışsa, sekiz yanlış tahminden sonra boşalan bir miktar sağlık kaybedersiniz.",
-      },
-      {
-        code: "03",
-        title: "Kazanmak ya da kaybetmek",
-        body: "Sağlığınız tükenmeden önce kelimedeki tüm harfleri tahmin ederek kazanırsınız. Kelimeyi tahmin etmeden önce sağlık çubuğu boşalırsa kaybedersiniz.",
-      },
-    ],
+    howToPlay: {
+      cards: [
+        {
+          code: "01",
+          title: "Bir kategori seçin",
+          body: "İlk olarak, hayvanlar veya filmler gibi bir kelime kategorisi seçin. Bilgisayar daha sonra bu konudan rastgele gizli bir kelime seçer ve kelimenin her harfi için size boşluklar gösterir.",
+        },
+        {
+          code: "02",
+          title: "Harfleri tahmin et",
+          body: "Sırayla harfleri tahmin edin. Tahmininiz doğruysa bilgisayar ilgili boşlukları doldurur. Yanlışsa, sekiz yanlış tahminden sonra boşalan bir miktar sağlık kaybedersiniz.",
+        },
+        {
+          code: "03",
+          title: "Kazanmak ya da kaybetmek",
+          body: "Sağlığınız tükenmeden önce kelimedeki tüm harfleri tahmin ederek kazanırsınız. Kelimeyi tahmin etmeden önce sağlık çubuğu boşalırsa kaybedersiniz.",
+        },
+      ],
+      titleImgPath: "/images/nasil-oynanir.svg",
+      title: "Nasıl Oynanır",
+    },
+    pickCategory: {
+      categories: [
+        {
+          name: "FİLMLER",
+          slug: "movies",
+        },
+        {
+          name: "TV ŞOVLARI",
+          slug: "tv-shows",
+        },
+        {
+          name: "ÜLKELER",
+          slug: "countries",
+        },
+        {
+          name: "BAŞKENTLER",
+          slug: "capital-cities",
+        },
+        {
+          name: "HAYVANLAR",
+          slug: "animals",
+        },
+        {
+          name: "SPOSPORRTS",
+          slug: "sports",
+        },
+      ],
+      titleImgPath: "/images/bir-kategori-secin.svg",
+      title: "Bir Kategori Seçin",
+    },
   },
 }

@@ -17,10 +17,16 @@ export function HowToPlay() {
           />
         </Link>
 
-        <img src="/images/how-to-play.svg" alt="" />
+        <img
+          src={data[language].howToPlay.titleImgPath}
+          alt={data[language].howToPlay.title}
+          title={data[language].howToPlay.title}
+          width={185}
+          height={58}
+        />
       </header>
       <main className="page-wrapper">
-        {data[language].howToPlay.map((item) => (
+        {data[language].howToPlay.cards.map((item) => (
           <section className="how-to-play-card" key={item.code}>
             <h2>
               <span>{item.code}</span>
