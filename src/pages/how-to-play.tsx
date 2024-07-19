@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import { data, LanguageCode } from "../data"
 import { useLanguageStore } from "../store/language"
 import { HeaderButton } from "../components/ui/header-button"
