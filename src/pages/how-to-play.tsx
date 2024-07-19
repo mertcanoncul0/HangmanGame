@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { data, LanguageCode } from "../data"
 import { useLanguageStore } from "../store/language"
+import { HeaderButton } from "../components/ui/header-button"
 
 export function HowToPlay() {
   const language = useLanguageStore((state) => state.language) as LanguageCode
@@ -8,14 +9,14 @@ export function HowToPlay() {
   return (
     <>
       <header className="back-header">
-        <Link to="/" className="back-button" aria-label="Back">
+        <HeaderButton as="link" to="/" aria-label="Back Button">
           <img
             src="/images/icon-back.svg"
             alt="Back button"
             width={17}
             height={16}
           />
-        </Link>
+        </HeaderButton>
 
         <img
           src={data[language].howToPlay.titleImgPath}

@@ -58,6 +58,63 @@ export type LanguageData = {
     titleImgPath: string
     title: string
   }
+
+  modal: {
+    paused: {
+      titleImgPath: string
+      alt: string
+      menus: [
+        {
+          name: string
+          to: string
+        },
+        {
+          name: string
+          to: string
+        },
+        {
+          name: string
+          to: string
+        }
+      ]
+    }
+    win: {
+      titleImgPath: string
+      alt: string
+      menus: [
+        {
+          name: string
+          to: string
+        },
+        {
+          name: string
+          to: string
+        },
+        {
+          name: string
+          to: string
+        }
+      ]
+    }
+    lose: {
+      titleImgPath: string
+      alt: string
+      menus: [
+        {
+          name: string
+          to: string
+        },
+        {
+          name: string
+          to: string
+        },
+        {
+          name: string
+          to: string
+        }
+      ]
+    }
+  }
 }
 
 export const data: { [key in LanguageCode]: LanguageData } = {
@@ -117,6 +174,62 @@ export const data: { [key in LanguageCode]: LanguageData } = {
       titleImgPath: "/images/pick-a-category.svg",
       title: "Pick a Category",
     },
+    modal: {
+      paused: {
+        titleImgPath: "/images/paused.svg",
+        alt: "Game Paused",
+        menus: [
+          {
+            name: "Continue",
+            to: "#",
+          },
+          {
+            name: "new category",
+            to: "/pick-category",
+          },
+          {
+            name: "quit game",
+            to: "/",
+          },
+        ],
+      },
+      win: {
+        titleImgPath: "/images/you-win.svg",
+        alt: "You Win",
+        menus: [
+          {
+            name: "Continue",
+            to: "#",
+          },
+          {
+            name: "new category",
+            to: "/pick-category",
+          },
+          {
+            name: "quit game",
+            to: "/",
+          },
+        ],
+      },
+      lose: {
+        titleImgPath: "/images/you-lose.svg",
+        alt: "You Lose",
+        menus: [
+          {
+            name: "Continue",
+            to: "#",
+          },
+          {
+            name: "new category",
+            to: "/pick-category",
+          },
+          {
+            name: "quit game",
+            to: "/",
+          },
+        ],
+      },
+    },
   },
   tr: {
     home: {
@@ -167,12 +280,68 @@ export const data: { [key in LanguageCode]: LanguageData } = {
           slug: "animals",
         },
         {
-          name: "SPOSPORRTS",
+          name: "SPORLAR",
           slug: "sports",
         },
       ],
       titleImgPath: "/images/bir-kategori-secin.svg",
       title: "Bir Kategori Seçin",
+    },
+    modal: {
+      paused: {
+        titleImgPath: "/images/duraklat.svg",
+        alt: "Duraklat",
+        menus: [
+          {
+            name: "devam et",
+            to: "#",
+          },
+          {
+            name: "yeni̇ kategori̇",
+            to: "/pick-category",
+          },
+          {
+            name: "oyundan çık",
+            to: "/",
+          },
+        ],
+      },
+      win: {
+        titleImgPath: "/images/kazandin.svg",
+        alt: "Kazandın",
+        menus: [
+          {
+            name: "devam et",
+            to: "#",
+          },
+          {
+            name: "yeni̇ kategori̇",
+            to: "/pick-category",
+          },
+          {
+            name: "oyundan çık",
+            to: "/",
+          },
+        ],
+      },
+      lose: {
+        titleImgPath: "/images/kaybettin.svg",
+        alt: "Kaybettin",
+        menus: [
+          {
+            name: "devam et",
+            to: "#",
+          },
+          {
+            name: "yeni̇ kategori̇",
+            to: "/pick-category",
+          },
+          {
+            name: "oyundan çık",
+            to: "/",
+          },
+        ],
+      },
     },
   },
 }

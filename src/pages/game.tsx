@@ -1,4 +1,8 @@
 import { useLoaderData } from "react-router-dom"
+import { GameHeader } from "../components/game-header"
+import { LanguageCode } from "../data"
+import { useLanguageStore } from "../store/language"
+import { getCategoryNameBySlug } from "../lib/helper"
 
 export function loader({ params }: { params: object }) {
   return params
@@ -6,12 +10,11 @@ export function loader({ params }: { params: object }) {
 
 export function Game() {
   const { slug } = useLoaderData() as { slug: string }
-
-  console.log(slug)
+  const language = useLanguageStore((state) => state.language) as LanguageCode
 
   return (
-    <div>
-      <h1>Game Page</h1>
-    </div>
+    <>
+      <GameHeader categoryName={getCategoryNameBySlug(slug, language)} />
+    </>
   )
 }

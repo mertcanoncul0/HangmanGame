@@ -8,7 +8,7 @@ export function SelectLanguage() {
   }
 
   return (
-    <main className='select-language-wrapper'>
+    <main className="select-language-wrapper">
       <h1>Hangi dilde oynamak istersiniz?</h1>
       <button onClick={() => handleLanguageChange("tr")}>Türkçe</button>
       <button onClick={() => handleLanguageChange("en")}>İngilizce</button>

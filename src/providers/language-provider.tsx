@@ -1,7 +1,11 @@
 import { useLanguageStore } from "../store/language"
 import { SelectLanguage } from "../components/select-language"
 
-export function LanguageProvider({ Component }: { Component: React.FC }) {
+type LanguageProviderProps = {
+  Component: React.FC
+}
+
+export function LanguageProvider({ Component }: LanguageProviderProps) {
   const language = useLanguageStore((state) => state.language)
 
   if (!language) {
