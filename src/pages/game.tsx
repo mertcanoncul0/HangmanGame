@@ -8,12 +8,12 @@ import { Keyboard } from "../components/ui/keyboard"
 import { useEffect } from "preact/hooks"
 import { useUserStore } from "../store/user"
 
-export function loader({ params }: { params: { slug: string } }) {
-  getRandomWordFromCategory(params.slug)
+export function loader({ params }: { params: object }) {
+  const { slug } = params as { slug: string }
 
   return {
-    slug: params.slug,
-    randomKeyword: getRandomWordFromCategory(params.slug),
+    slug: slug,
+    randomKeyword: getRandomWordFromCategory(slug),
   }
 }
 
