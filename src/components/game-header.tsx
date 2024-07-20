@@ -28,7 +28,9 @@ export function GameHeader({ categoryName }: GameHeaderProps) {
           <h1>{categoryName}</h1>
         </section>
         <section className="game-header-right">
-          <span style={{ color: "white" }}>healtbar</span>
+          <div className="health-bar">
+            <span style={{ width: `${50 / 1}px` }}></span>
+          </div>
           <img
             src="/images/icon-heart.svg"
             alt="Healt Icon"

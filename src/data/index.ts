@@ -5,115 +5,51 @@ export type LanguageData = {
     title: string
     button: string
   }
-
   howToPlay: {
-    cards: [
-      {
-        title: string
-        code: string
-        body: string
-      },
-      {
-        title: string
-        code: string
-        body: string
-      },
-      {
-        title: string
-        code: string
-        body: string
-      }
-    ]
+    cards: {
+      title: string
+      code: string
+      body: string
+    }[]
     titleImgPath: string
     title: string
   }
-
   pickCategory: {
-    categories: [
-      {
-        name: string
-        slug: string
-      },
-      {
-        name: string
-        slug: string
-      },
-      {
-        name: string
-        slug: string
-      },
-      {
-        name: string
-        slug: string
-      },
-      {
-        name: string
-        slug: string
-      },
-      {
-        name: string
-        slug: string
-      }
-    ]
+    categories: {
+      name: string
+      slug: string
+    }[]
     titleImgPath: string
     title: string
   }
-
   modal: {
     paused: {
       titleImgPath: string
       alt: string
-      menus: [
-        {
-          name: string
-          to: string
-        },
-        {
-          name: string
-          to: string
-        },
-        {
-          name: string
-          to: string
-        }
-      ]
+      menus: {
+        name: string
+        to: string
+      }[]
     }
     win: {
       titleImgPath: string
       alt: string
-      menus: [
-        {
-          name: string
-          to: string
-        },
-        {
-          name: string
-          to: string
-        },
-        {
-          name: string
-          to: string
-        }
-      ]
+      menus: {
+        name: string
+        to: string
+      }[]
     }
     lose: {
       titleImgPath: string
       alt: string
-      menus: [
-        {
-          name: string
-          to: string
-        },
-        {
-          name: string
-          to: string
-        },
-        {
-          name: string
-          to: string
-        }
-      ]
+      menus: {
+        name: string
+        to: string
+      }[]
     }
+  }
+  keyboard: {
+    keys: string[]
   }
 }
 
@@ -230,6 +166,36 @@ export const data: { [key in LanguageCode]: LanguageData } = {
         ],
       },
     },
+    keyboard: {
+      keys: [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+      ],
+    },
   },
   tr: {
     home: {
@@ -342,6 +308,39 @@ export const data: { [key in LanguageCode]: LanguageData } = {
           },
         ],
       },
+    },
+    keyboard: {
+      keys: [
+        "a",
+        "b",
+        "c",
+        "ç",
+        "d",
+        "e",
+        "f",
+        "g",
+        "ğ",
+        "h",
+        "ı",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "ö",
+        "p",
+        "r",
+        "s",
+        "ş",
+        "t",
+        "u",
+        "ü",
+        "v",
+        "y",
+        "z",
+      ],
     },
   },
 }
