@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom"
 import { data, LanguageCode } from "../data"
 import { useLanguageStore } from "../store/language"
-import { GameCard } from "./ui/game-card"
 import { useUserStore } from "../store/user"
+import { GameCard } from "./ui/game-card"
 
-type GamePauseModalProps = {
+type GameWinModalProps = {
   open: boolean
-  onClick: () => void
 }
 
-export function GamePauseModal({ open, onClick }: GamePauseModalProps) {
+export function GameWinModal({ open }: GameWinModalProps) {
   const language = useLanguageStore((state) => state.language) as LanguageCode
   const {
     setCorrectLetters,
@@ -27,8 +26,8 @@ export function GamePauseModal({ open, onClick }: GamePauseModalProps) {
   return (
     <div className={`overlay ${open ? "show" : ""}`}>
       <GameCard
-        imagePath={data[language].modal.paused.titleImgPath}
-        alt={data[language].modal.paused.alt}
+        imagePath={data[language].modal.win.titleImgPath}
+        alt={data[language].modal.win.alt}
         cardHeight={445}
         open={open}
         w={186}
@@ -38,10 +37,13 @@ export function GamePauseModal({ open, onClick }: GamePauseModalProps) {
           <li className="modal-menu-item">
             <Link
               className="modal-menu-link heading-sm"
-              to="#"
-              onClick={onClick}
+              to=""
+              onClick={() => {
+                resetAll()
+                location.reload
+              }}
             >
-              {language === "en" ? "Continue" : "Devam et"}
+              {language === "en" ? "Play again" : "Tekrar oyna"}
             </Link>
           </li>
           <li className="modal-menu-item">

@@ -134,8 +134,8 @@ export const data: { [key in LanguageCode]: LanguageData } = {
         alt: "You Win",
         menus: [
           {
-            name: "Continue",
-            to: "#",
+            name: "play again!",
+            to: "again",
           },
           {
             name: "new category",
@@ -152,8 +152,8 @@ export const data: { [key in LanguageCode]: LanguageData } = {
         alt: "You Lose",
         menus: [
           {
-            name: "Continue",
-            to: "#",
+            name: "play again!",
+            to: "again",
           },
           {
             name: "new category",

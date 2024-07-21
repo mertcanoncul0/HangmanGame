@@ -10,8 +10,8 @@ type UserState = {
   correctLetters: string[]
   setCorrectLetters: (correctLetters: string[]) => void
 
-  wrongLetters: string[]
-  setWrongLetters: (wrongLetters: string[]) => void
+  incorrectLetters: string[]
+  setIncorrectLetters: (incorrectLetters: string[]) => void
 }
 
 export const useUserStore = create<UserState>((set) => ({
@@ -24,6 +24,6 @@ export const useUserStore = create<UserState>((set) => ({
   correctLetters: [],
   setCorrectLetters: (correctLetters) => set({ correctLetters }),
 
-  wrongLetters: [],
-  setWrongLetters: (wrongLetters) => set({ wrongLetters }),
+  incorrectLetters: [],
+  setIncorrectLetters: (incorrectLetters) => set({ incorrectLetters }),
 }))

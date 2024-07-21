@@ -1,6 +1,7 @@
 import { useState } from "preact/hooks"
 import { GamePauseModal } from "./game-pause-modal"
 import { HeaderButton } from "./ui/header-button"
+import { useUserStore } from "../store/user"
 
 type GameHeaderProps = {
   categoryName: string
@@ -8,6 +9,7 @@ type GameHeaderProps = {
 
 export function GameHeader({ categoryName }: GameHeaderProps) {
   const [open, setOpen] = useState(false)
+  const { incorrectLetters } = useUserStore((state) => state)
 
   function handleMenuClick() {
     setOpen(!open)
@@ -29,7 +31,9 @@ export function GameHeader({ categoryName }: GameHeaderProps) {
         </section>
         <section className="game-header-right">
           <div className="health-bar">
-            <span style={{ width: `${50 / 1}px` }}></span>
+            <span
+              style={{ width: `${50 * (1 - incorrectLetters.length / 7)}px` }}
+            ></span>
           </div>
           <img
             src="/images/icon-heart.svg"

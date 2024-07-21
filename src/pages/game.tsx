@@ -2,61 +2,123 @@ import { useLoaderData } from "react-router-dom"
 import { GameHeader } from "../components/game-header"
 import { LanguageCode } from "../data"
 import { useLanguageStore } from "../store/language"
-import { getCategoryNameBySlug, getRandomWordFromCategory } from "../lib/helper"
-import { HangmanWord } from "../components/hangman-word"
-import { Keyboard } from "../components/ui/keyboard"
-import { useEffect } from "preact/hooks"
+import {
+  getCategoryNameBySlug,
+  getFilteredWord,
+  getRandomWordFromCategory,
+} from "../lib/helper"
+import { HangmanWord } from "../components/ui/hangman-word"
 import { useUserStore } from "../store/user"
+import { useEffect, useState } from "preact/hooks"
+import { GameWinModal } from "../components/game-win-modal"
+import { GameLoseModal } from "../components/game-lose-modal"
+import { GameKeyboard } from "../components/game-keyboard"
 
 export function loader({ params }: { params: object }) {
   const { slug } = params as { slug: string }
 
   return {
     slug: slug,
-    randomKeyword: getRandomWordFromCategory(slug),
+    selectedWord: getRandomWordFromCategory(slug, "tr"),
   }
 }
 
 export function Game() {
-  const data = useLoaderData() as { slug: string; randomKeyword: string }
+  const { slug } = useLoaderData() as {
+    slug: string
+    selectedWord: string
+  }
   const language = useLanguageStore((state) => state.language) as LanguageCode
-  const { guessedLetters, setGuessedLetters } = useUserStore((state) => state)
-
-  function onClick(e: Event) {
-    const target = e.target as HTMLButtonElement
-    console.log(target.textContent)
-  }
-
-  function addGuessedLetter(letter: string) {
-    if (!guessedLetters.includes(letter)) {
-      setGuessedLetters([...guessedLetters, letter])
-    }
-  }
-
-  console.log(guessedLetters)
+  const {
+    correctLetters,
+    setCorrectLetters,
+    guessedLetters,
+    setGuessedLetters,
+    incorrectLetters,
+    setIncorrectLetters,
+    playable,
+    setPlayable,
+  } = useUserStore((state) => state)
+  const [selectedWord, setSelectedWord] = useState("")
 
   useEffect(() => {
-    function onKeyPress(e: KeyboardEvent) {
-      const key = e.key
+    setSelectedWord(getRandomWordFromCategory(slug, language))
+  }, [slug])
 
-      if (!key.match(/^[a-z]$/)) return
+  if (!selectedWord) {
+    return null
+  }
 
-      e.preventDefault()
-      addGuessedLetter(key)
+  function checkCorrectLetters(key: string) {
+    if (selectedWord.includes(key) && !correctLetters.includes(key)) {
+      setCorrectLetters([...correctLetters, key])
+    }
+  }
+
+  function checkIncorrectLetters(key: string) {
+    if (!selectedWord.includes(key) && !incorrectLetters.includes(key)) {
+      setIncorrectLetters([...incorrectLetters, key])
+    }
+  }
+
+  function checkGuessLetters(key: string) {
+    if (correctLetters.includes(key)) {
+      setGuessedLetters([...guessedLetters, key])
+    }
+  }
+
+  function handleClick(key: string) {
+    if (playable) {
+      checkCorrectLetters(key.toLowerCase())
+      checkIncorrectLetters(key.toLowerCase())
+      checkGuessLetters(key.toLowerCase())
+    }
+  }
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (
+        playable &&
+        e.key.length === 1 &&
+        /[a-zA-ZçğıöşüÇĞİÖŞÜ]/.test(e.key)
+      ) {
+        checkCorrectLetters(e.key.toLowerCase())
+        checkIncorrectLetters(e.key.toLowerCase())
+        checkGuessLetters(e.key.toLowerCase())
+      }
     }
 
-    window.addEventListener("keypress", onKeyPress)
-
-    return () => {
-      window.removeEventListener("keypress", onKeyPress)
+    if (correctLetters.length === getFilteredWord(selectedWord).length) {
+      setPlayable(false)
     }
-  }, [guessedLetters])
+
+    if (incorrectLetters.length >= 7) {
+      setPlayable(false)
+    }
+
+    addEventListener("keydown", handleKeyDown)
+
+    return () => removeEventListener("keydown", handleKeyDown)
+  }, [guessedLetters, correctLetters, incorrectLetters])
 
   return (
     <>
-      <GameHeader categoryName={getCategoryNameBySlug(data.slug, language)} />
-      <HangmanWord keyword={data.randomKeyword} />
-      <Keyboard language={language} onClick={onClick} />
+      <GameHeader categoryName={getCategoryNameBySlug(slug, language)} />
+      <HangmanWord
+        selectedWord={selectedWord}
+        correctLetters={correctLetters}
+      />
+      <GameKeyboard
+        correctLetters={correctLetters}
+        incorrectLetters={incorrectLetters}
+        onClick={handleClick}
+      />
+
+      <GameWinModal
+        open={correctLetters.length === getFilteredWord(selectedWord).length}
+      />
+
+      <GameLoseModal open={incorrectLetters.length >= 7} />
     </>
   )
 }

@@ -52,11 +52,33 @@ export function getCategoriesKey(str: string): CategoriesKey {
   return camelCaseStr
 }
 
-export function getRandomWordFromCategory(category: string): string {
-  const arr = categories[getCategoriesKey(category)]
+export function getRandomWordFromCategory(
+  category: string,
+  language: LanguageCode
+): string {
+  const arr = categories[language][getCategoriesKey(category)]
   const randomIndex = Math.floor(Math.random() * arr.length)
 
   const name = arr[randomIndex].name.toLowerCase() as string
 
   return name
+}
+
+export function getFilteredWord(word: string): string {
+  const cleanWord = word.toLowerCase().replace(/[^a-zA-ZçğıöşüÇĞİÖŞÜ]/g, "")
+
+  const letterCounts: { [key: string]: number } = {}
+
+  for (const letter of cleanWord) {
+    letterCounts[letter] = (letterCounts[letter] || 0) + 1
+  }
+
+  const result = cleanWord
+    .split("")
+    .filter((letter, index, self) => {
+      return letterCounts[letter] === 1 || self.indexOf(letter) === index
+    })
+    .join("")
+
+  return result
 }
