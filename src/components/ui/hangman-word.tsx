@@ -10,7 +10,7 @@ export function HangmanWord({
   return (
     <div className="hangman-wrapper">
       {selectedWord.split(" ").map((word, index) => (
-        <div className="hangman-word-wrapper">
+        <div className="hangman-word-wrapper" key={index}>
           {word.split("").map((letter) => (
             <span
               className={`hangman-letter ${
