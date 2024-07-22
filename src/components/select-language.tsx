@@ -32,7 +32,7 @@ export function SelectLanguage() {
             onClick={() => handleLanguageChange("en")}
             title={"English"}
           >
-            <img src="images/um.svg" alt="English Flag" class="flag-icon" />
+            <img src="images/en.svg" alt="English Flag" class="flag-icon" />
           </button>
         </div>
       </GameCard>

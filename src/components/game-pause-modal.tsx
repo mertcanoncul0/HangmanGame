@@ -25,7 +25,7 @@ export function GamePauseModal({ open, onClick }: GamePauseModalProps) {
     setPlayable(true)
   }
   return (
-    <div className={`overlay ${open ? "show" : ""}`}>
+    <div className={`overlay game-modal ${open ? "show" : ""}`}>
       <GameCard
         imagePath={data[language].modal.paused.titleImgPath}
         alt={data[language].modal.paused.alt}

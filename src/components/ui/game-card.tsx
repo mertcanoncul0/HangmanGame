@@ -12,8 +12,6 @@ type GameCardProps = {
 export function GameCard({
   imagePath,
   alt,
-  w,
-  h,
   children,
   className = "",
   cardHeight,
@@ -24,14 +22,7 @@ export function GameCard({
       className={`game-card ${open ? "show" : ""} ${className}`}
       style={{ height: cardHeight }}
     >
-      <img
-        src={imagePath}
-        alt={alt}
-        title={alt}
-        className="logo"
-        width={w}
-        height={h}
-      />
+      <img src={imagePath} alt={alt} title={alt} className="logo" />
 
       {children}
     </div>

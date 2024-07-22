@@ -19,25 +19,26 @@ export function GameHeader({ categoryName }: GameHeaderProps) {
     <>
       <header className="game-header">
         <section className="game-header-left">
-          <HeaderButton as="button" onClick={handleMenuClick}>
+          <button className="game-header-button" onClick={handleMenuClick}>
             <img
               src="/images/icon-menu.svg"
               alt="Menu Icon"
               width={16}
               height={13}
             />
-          </HeaderButton>
+          </button>
           <h1>{categoryName}</h1>
         </section>
         <section className="game-header-right">
           <div className="health-bar">
             <span
-              style={{ width: `${50 * (1 - incorrectLetters.length / 7)}px` }}
+              style={{ width: `${100 * (1 - incorrectLetters.length / 7)}%` }}
             ></span>
           </div>
           <img
             src="/images/icon-heart.svg"
             alt="Healt Icon"
+            className="health-icon"
             width={26}
             height={24}
           />

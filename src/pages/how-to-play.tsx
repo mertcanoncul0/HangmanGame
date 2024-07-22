@@ -28,11 +28,15 @@ export function HowToPlay() {
       <main className="page-wrapper">
         {data[language].howToPlay.cards.map((item) => (
           <section className="how-to-play-card" key={item.code}>
-            <h2>
-              <span>{item.code}</span>
-              {item.title}
-            </h2>
-            <p>{item.body}</p>
+            <span className="card-code heading-lg">{item.code}</span>
+
+            <div>
+              <h2>
+                <span>{item.code}</span>
+                {item.title}
+              </h2>
+              <p>{item.body}</p>
+            </div>
           </section>
         ))}
       </main>

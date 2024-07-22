@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { data, LanguageCode } from "../data"
 import { GameCard } from "./ui/game-card"
 import { useLanguageStore } from "../store/language"
+import { LanguageSwitcher } from "./language-switcher"
 
 export function HomePlayCard() {
   const language = useLanguageStore((state) => state.language) as LanguageCode
@@ -19,18 +20,22 @@ export function HomePlayCard() {
         <img
           src="/images/icon-play.svg"
           alt="Play Game Button"
-          width={52}
-          height={40}
+          width={60}
+          height={60}
         />
       </Link>
 
-      <Link
-        to="/how-to-play"
-        className="how-to-button"
-        title="How To Play Button"
-      >
-        {data[language].home.button}
-      </Link>
+      <div>
+        <Link
+          to="/how-to-play"
+          className="how-to-button"
+          title="How To Play Button"
+        >
+          {data[language].home.button}
+        </Link>
+
+        <LanguageSwitcher />
+      </div>
     </GameCard>
   )
 }
