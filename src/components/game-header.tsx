@@ -1,6 +1,5 @@
 import { useState } from "preact/hooks"
 import { GamePauseModal } from "./game-pause-modal"
-import { HeaderButton } from "./ui/header-button"
 import { useUserStore } from "../store/user"
 
 type GameHeaderProps = {
