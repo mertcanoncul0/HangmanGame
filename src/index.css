@@ -11,6 +11,7 @@
   body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    font-weight: 400;
   }
   img,
   picture,
@@ -18,7 +19,6 @@
   canvas,
   svg {
     display: block;
-    max-width: 100%;
   }
   input,
   button,
@@ -34,6 +34,7 @@
   h5,
   h6 {
     overflow-wrap: break-word;
+    font-weight: 400;
   }
   #root {
     isolation: isolate;
@@ -133,27 +134,10 @@ body.home {
     flex-direction: column;
     gap: 1rem;
     align-items: center;
-
-    & button {
-      background-color: transparent;
-      border: 1px solid var(--white);
-      color: var(--white);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
   }
 
   .pick-category-wrapper {
     padding-inline: 26px;
-  }
-
-  .hangman-word-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 18px;
-    gap: 8px;
   }
 }
 
@@ -166,9 +150,9 @@ body.home {
 
     & h2 {
       margin-bottom: 16px;
-      font-size: 24px;
-      line-height: calc(24px * 1.2);
-      letter-spacing: calc(24px * 0.05);
+      font-size: 26px;
+      line-height: calc(26px * 1.2);
+      letter-spacing: calc(26px * 0.05);
       color: var(--dark-navy);
       text-transform: uppercase;
       font-weight: normal;
@@ -180,9 +164,9 @@ body.home {
     }
 
     & p {
-      font-size: 16px;
-      line-height: calc(16px * 1.2);
-      letter-spacing: calc(16px * 0.05);
+      font-size: 17px;
+      line-height: calc(17px * 1.2);
+      letter-spacing: calc(17px * 0.05);
 
       color: #887dc0;
     }
@@ -210,8 +194,12 @@ body.home {
 
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s ease-in-out;
     transform: translateX(-300px);
+
+    @media (width <= 360px) {
+      margin-block: 154px 24px;
+    }
   }
 
   .game-card.show {
@@ -284,6 +272,15 @@ body.home {
     background: linear-gradient(180deg, #fe71fe 0%, #7199ff 100%);
     box-shadow: inset 0 -2px 0 3px #140e66, inset 0 1px 0 6px #c642fb;
   }
+
+  .game-card-word {
+    font-size: 24px;
+    line-height: calc(24px * 1.2);
+    letter-spacing: calc(24px * 0.2);
+    color: var(--white);
+    text-transform: uppercase;
+    margin-block: 24px;
+  }
 }
 
 @layer Button {
@@ -318,7 +315,9 @@ body.home {
 
 @layer List {
   .pick-category-list {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .pick-category-item {
@@ -359,7 +358,7 @@ body.home {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 32px 26px 79px 26px;
+    padding: 32px 26px 64px 26px;
   }
 
   .health-bar {
@@ -401,6 +400,18 @@ body.home {
 @layer Word {
   .hangman-wrapper {
     margin-bottom: 80px;
+
+    &.one-word {
+      margin-bottom: 116px;
+    }
+  }
+
+  .hangman-word-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 18px;
+    gap: 8px;
   }
 
   .hangman-letter {
@@ -458,5 +469,40 @@ body.home {
     &.incorrect {
       opacity: 0.25;
     }
+  }
+}
+
+@layer Language {
+  .language-title {
+    font-size: 1.8rem;
+    letter-spacing: calc(1.8rem * 0.05);
+    line-height: calc(1.8rem * 1.2);
+    margin-bottom: 40px;
+    color: var(--white);
+    text-align: center;
+  }
+
+  .language-options {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .language-option-button {
+    background-color: transparent;
+    border: 1px solid var(--white);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  .language-option-button:hover {
+    background-color: #0056b3;
+  }
+
+  .flag-icon {
+    width: 40px;
+    height: 40px;
   }
 }

@@ -1,28 +1,16 @@
 import { Link } from "react-router-dom"
 import { data, LanguageCode } from "../data"
 import { useLanguageStore } from "../store/language"
-import { useUserStore } from "../store/user"
 import { GameCard } from "./ui/game-card"
 
 type GameWinModalProps = {
   open: boolean
+  resetAll: () => void
 }
 
-export function GameWinModal({ open }: GameWinModalProps) {
+export function GameWinModal({ open, resetAll }: GameWinModalProps) {
   const language = useLanguageStore((state) => state.language) as LanguageCode
-  const {
-    setCorrectLetters,
-    setIncorrectLetters,
-    setGuessedLetters,
-    setPlayable,
-  } = useUserStore((state) => state)
 
-  function resetAll() {
-    setCorrectLetters([])
-    setIncorrectLetters([])
-    setGuessedLetters([])
-    setPlayable(true)
-  }
   return (
     <div className={`overlay ${open ? "show" : ""}`}>
       <GameCard
@@ -38,10 +26,7 @@ export function GameWinModal({ open }: GameWinModalProps) {
             <Link
               className="modal-menu-link heading-sm"
               to=""
-              onClick={() => {
-                resetAll()
-                location.reload
-              }}
+              onClick={resetAll}
             >
               {language === "en" ? "Play again" : "Tekrar oyna"}
             </Link>

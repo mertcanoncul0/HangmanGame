@@ -1,28 +1,16 @@
 import { Link } from "react-router-dom"
 import { data, LanguageCode } from "../data"
 import { useLanguageStore } from "../store/language"
-import { useUserStore } from "../store/user"
 import { GameCard } from "./ui/game-card"
 
 type GameLoseModalProps = {
   open: boolean
+  resetAll: () => void
+  word: string
 }
 
-export function GameLoseModal({ open }: GameLoseModalProps) {
+export function GameLoseModal({ open, resetAll, word }: GameLoseModalProps) {
   const language = useLanguageStore((state) => state.language) as LanguageCode
-  const {
-    setCorrectLetters,
-    setIncorrectLetters,
-    setGuessedLetters,
-    setPlayable,
-  } = useUserStore((state) => state)
-
-  function resetAll() {
-    setCorrectLetters([])
-    setIncorrectLetters([])
-    setGuessedLetters([])
-    setPlayable(true)
-  }
 
   return (
     <div className={`overlay ${open ? "show" : ""}`}>
@@ -34,15 +22,15 @@ export function GameLoseModal({ open }: GameLoseModalProps) {
         w={186}
         h={113}
       >
+        <h2 className="game-card-word">
+          {language === "tr" ? "Kelime" : "Word"}: <span>{word}</span>
+        </h2>
         <ul className="modal-menu-list">
           <li className="modal-menu-item">
             <Link
               className="modal-menu-link heading-sm"
               to=""
-              onClick={() => {
-                resetAll()
-                location.reload
-              }}
+              onClick={resetAll}
             >
               {language === "en" ? "Play again" : "Tekrar oyna"}
             </Link>
@@ -51,9 +39,7 @@ export function GameLoseModal({ open }: GameLoseModalProps) {
             <Link
               className="modal-menu-link heading-sm"
               to="/pick-category"
-              onClick={() => {
-                resetAll()
-              }}
+              onClick={resetAll}
             >
               {language === "en" ? "New category" : "Yeni kategori"}
             </Link>
@@ -62,9 +48,7 @@ export function GameLoseModal({ open }: GameLoseModalProps) {
             <Link
               className="modal-menu-link heading-sm quit"
               to="/"
-              onClick={() => {
-                resetAll()
-              }}
+              onClick={resetAll}
             >
               {language === "en" ? "Quit" : "Çıkış yap"}
             </Link>

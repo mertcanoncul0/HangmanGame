@@ -7,9 +7,14 @@ export function HangmanWord({
   selectedWord,
   correctLetters,
 }: HangmanWordProps) {
+  const splitSelectedWord = selectedWord.split(" ")
   return (
-    <div className="hangman-wrapper">
-      {selectedWord.split(" ").map((word, index) => (
+    <div
+      className={`hangman-wrapper ${
+        splitSelectedWord.length === 1 ? "one-word" : ""
+      }`}
+    >
+      {splitSelectedWord.map((word, index) => (
         <div className="hangman-word-wrapper" key={index}>
           {word.split("").map((letter) => (
             <span

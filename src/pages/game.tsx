@@ -18,16 +18,12 @@ export function loader({ params }: { params: object }) {
   const { slug } = params as { slug: string }
 
   return {
-    slug: slug,
-    selectedWord: getRandomWordFromCategory(slug, "tr"),
+    slug,
   }
 }
 
 export function Game() {
-  const { slug } = useLoaderData() as {
-    slug: string
-    selectedWord: string
-  }
+  const { slug } = useLoaderData() as { slug: string }
   const language = useLanguageStore((state) => state.language) as LanguageCode
   const {
     correctLetters,
@@ -40,6 +36,14 @@ export function Game() {
     setPlayable,
   } = useUserStore((state) => state)
   const [selectedWord, setSelectedWord] = useState("")
+
+  function resetAll() {
+    setCorrectLetters([])
+    setGuessedLetters([])
+    setIncorrectLetters([])
+    setPlayable(true)
+    setSelectedWord(getRandomWordFromCategory(slug, language))
+  }
 
   useEffect(() => {
     setSelectedWord(getRandomWordFromCategory(slug, language))
@@ -116,9 +120,14 @@ export function Game() {
 
       <GameWinModal
         open={correctLetters.length === getFilteredWord(selectedWord).length}
+        resetAll={resetAll}
       />
 
-      <GameLoseModal open={incorrectLetters.length >= 7} />
+      <GameLoseModal
+        open={incorrectLetters.length >= 7}
+        resetAll={resetAll}
+        word={selectedWord}
+      />
     </>
   )
 }
