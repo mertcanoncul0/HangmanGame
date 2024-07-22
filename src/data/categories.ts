@@ -184,7 +184,7 @@ export const categories: CategoriesData = {
         name: "New Delhi",
       },
       {
-        name: "Brasília",
+        name: "Brasilia",
       },
       {
         name: "Athens",
