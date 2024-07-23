@@ -344,7 +344,7 @@ body {
   }
   100% {
     transform: scale(1);
-    background-color: var(--blue);
+    background-color: rgb(89, 247, 89);
     color: var(--white);
   }
 }
@@ -360,7 +360,7 @@ body {
   }
   100% {
     transform: scale(1);
-    background-color: var(--blue);
+    background-color: rgb(247, 89, 89);
     color: var(--white);
   }
 }
