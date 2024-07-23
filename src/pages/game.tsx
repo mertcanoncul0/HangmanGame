@@ -73,9 +73,9 @@ export function Game() {
 
   function handleClick(key: string) {
     if (playable) {
-      checkCorrectLetters(key.toLowerCase())
-      checkIncorrectLetters(key.toLowerCase())
-      checkGuessLetters(key.toLowerCase())
+      checkCorrectLetters(key.toLocaleLowerCase(language))
+      checkIncorrectLetters(key.toLocaleLowerCase(language))
+      checkGuessLetters(key.toLocaleLowerCase(language))
     }
   }
 
@@ -86,9 +86,11 @@ export function Game() {
         e.key.length === 1 &&
         /[a-zA-ZçğıöşüÇĞİÖŞÜ]/.test(e.key)
       ) {
-        checkCorrectLetters(e.key.toLowerCase())
-        checkIncorrectLetters(e.key.toLowerCase())
-        checkGuessLetters(e.key.toLowerCase())
+        console.log(e.key)
+
+        checkCorrectLetters(e.key.toLocaleLowerCase(language))
+        checkIncorrectLetters(e.key.toLocaleLowerCase(language))
+        checkGuessLetters(e.key.toLocaleLowerCase(language))
       }
     }
 

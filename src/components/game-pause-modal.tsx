@@ -25,7 +25,7 @@ export function GamePauseModal({ open, onClick }: GamePauseModalProps) {
     setPlayable(true)
   }
   return (
-    <div className={`overlay game-modal ${open ? "show" : ""}`}>
+    <div className={`overlay game-modal pause ${open ? "show" : ""}`}>
       <GameCard
         imagePath={data[language].modal.paused.titleImgPath}
         alt={data[language].modal.paused.alt}
@@ -35,30 +35,18 @@ export function GamePauseModal({ open, onClick }: GamePauseModalProps) {
         h={113}
       >
         <ul className="modal-menu-list">
-          <li className="modal-menu-item">
-            <Link
-              className="modal-menu-link heading-sm"
-              to="#"
-              onClick={onClick}
-            >
+          <li className="modal-menu-item" onClick={onClick}>
+            <Link className="modal-menu-link heading-sm" to="#">
               {language === "en" ? "Continue" : "Devam et"}
             </Link>
           </li>
-          <li className="modal-menu-item">
-            <Link
-              className="modal-menu-link heading-sm"
-              to="/pick-category"
-              onClick={resetAll}
-            >
+          <li className="modal-menu-item" onClick={resetAll}>
+            <Link className="modal-menu-link heading-sm" to="/pick-category">
               {language === "en" ? "New category" : "Yeni kategori"}
             </Link>
           </li>
-          <li className="modal-menu-item">
-            <Link
-              className="modal-menu-link heading-sm quit"
-              to="/"
-              onClick={resetAll}
-            >
+          <li className="modal-menu-item" onClick={resetAll}>
+            <Link className="modal-menu-link heading-sm quit" to="/">
               {language === "en" ? "Quit" : "Çıkış yap"}
             </Link>
           </li>

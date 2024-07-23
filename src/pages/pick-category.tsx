@@ -8,7 +8,7 @@ export function PickCategory() {
 
   return (
     <>
-      <header className="back-header">
+      <header className="back-header category">
         <HeaderButton as="link" to="/" aria-label="Back Button">
           <img
             src="/images/icon-back.svg"

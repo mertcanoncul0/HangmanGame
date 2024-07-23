@@ -13,7 +13,7 @@ export function GameLoseModal({ open, resetAll, word }: GameLoseModalProps) {
   const language = useLanguageStore((state) => state.language) as LanguageCode
 
   return (
-    <div className={`overlay game-modal ${open ? "show" : ""}`}>
+    <div className={`overlay game-modal lose ${open ? "show" : ""}`}>
       <GameCard
         imagePath={data[language].modal.lose.titleImgPath}
         alt={data[language].modal.lose.alt}
@@ -26,21 +26,13 @@ export function GameLoseModal({ open, resetAll, word }: GameLoseModalProps) {
           {language === "tr" ? "Kelime" : "Word"}: <span>"{word}"</span>
         </h2>
         <ul className="modal-menu-list">
-          <li className="modal-menu-item">
-            <Link
-              className="modal-menu-link heading-sm"
-              to=""
-              onClick={resetAll}
-            >
+          <li className="modal-menu-item" onClick={resetAll}>
+            <Link className="modal-menu-link heading-sm" to="">
               {language === "en" ? "Play again" : "Tekrar oyna"}
             </Link>
           </li>
-          <li className="modal-menu-item">
-            <Link
-              className="modal-menu-link heading-sm"
-              to="/pick-category"
-              onClick={resetAll}
-            >
+          <li className="modal-menu-item" onClick={resetAll}>
+            <Link className="modal-menu-link heading-sm" to="/pick-category">
               {language === "en" ? "New category" : "Yeni kategori"}
             </Link>
           </li>

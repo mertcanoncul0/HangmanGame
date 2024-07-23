@@ -12,7 +12,7 @@ export function GameWinModal({ open, resetAll }: GameWinModalProps) {
   const language = useLanguageStore((state) => state.language) as LanguageCode
 
   return (
-    <div className={`overlay game-modal ${open ? "show" : ""}`}>
+    <div className={`overlay game-modal win ${open ? "show" : ""}`}>
       <GameCard
         imagePath={data[language].modal.win.titleImgPath}
         alt={data[language].modal.win.alt}
@@ -27,21 +27,13 @@ export function GameWinModal({ open, resetAll }: GameWinModalProps) {
               {language === "en" ? "Play again" : "Tekrar oyna"}
             </button>
           </li>
-          <li className="modal-menu-item">
-            <Link
-              className="modal-menu-link heading-sm"
-              to="/pick-category"
-              onClick={resetAll}
-            >
+          <li className="modal-menu-item" onClick={resetAll}>
+            <Link className="modal-menu-link heading-sm" to="/pick-category">
               {language === "en" ? "New category" : "Yeni kategori"}
             </Link>
           </li>
-          <li className="modal-menu-item">
-            <Link
-              className="modal-menu-link heading-sm quit"
-              to="/"
-              onClick={resetAll}
-            >
+          <li className="modal-menu-item" onClick={resetAll}>
+            <Link className="modal-menu-link heading-sm quit" to="/">
               {language === "en" ? "Quit" : "Çıkış yap"}
             </Link>
           </li>

@@ -44,28 +44,44 @@ export function getCategoriesKey(str: string): CategoriesKey {
   let camelCaseStr = words
     .map((word, index) => {
       return index === 0
-        ? word.toLowerCase()
-        : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        ? word.toLocaleLowerCase()
+        : word.charAt(0).toUpperCase() + word.slice(1).toLocaleLowerCase()
     })
     .join("") as CategoriesKey
 
   return camelCaseStr
 }
 
+const shuffledIndices: Map<string, number[]> = new Map()
+
 export function getRandomWordFromCategory(
   category: string,
   language: LanguageCode
 ): string {
   const arr = categories[language][getCategoriesKey(category)]
-  const randomIndex = Math.floor(Math.random() * arr.length)
 
-  const name = arr[randomIndex].name.toLowerCase() as string
+  let indices = shuffledIndices.get(category)
+
+  if (!indices) {
+    indices = Array.from(arr.keys())
+    indices.sort(() => Math.random() - 0.5)
+    shuffledIndices.set(category, indices)
+  }
+
+  const randomIndex = indices.pop() as number
+  if (indices.length === 0) {
+    shuffledIndices.delete(category)
+  }
+
+  const name = arr[randomIndex].name.toLocaleLowerCase(language) as string
 
   return name
 }
 
 export function getFilteredWord(word: string): string {
-  const cleanWord = word.toLowerCase().replace(/[^a-zA-ZçğıöşüÇĞİÖŞÜ]/g, "")
+  const cleanWord = word
+    .toLocaleLowerCase()
+    .replace(/[^a-zA-ZçğıöşüÇĞİÖŞÜ]/g, "")
 
   const letterCounts: { [key: string]: number } = {}
 

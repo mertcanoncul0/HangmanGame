@@ -49,7 +49,9 @@ export type LanguageData = {
     }
   }
   keyboard: {
-    keys: string[]
+    0: string[]
+    1: string[]
+    2: string[]
   }
 }
 
@@ -167,34 +169,9 @@ export const data: { [key in LanguageCode]: LanguageData } = {
       },
     },
     keyboard: {
-      keys: [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z",
-      ],
+      0: ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+      1: ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+      2: ["z", "x", "c", "v", "b", "n", "m"],
     },
   },
   tr: {
@@ -310,37 +287,9 @@ export const data: { [key in LanguageCode]: LanguageData } = {
       },
     },
     keyboard: {
-      keys: [
-        "a",
-        "b",
-        "c",
-        "ç",
-        "d",
-        "e",
-        "f",
-        "g",
-        "ğ",
-        "h",
-        "ı",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "ö",
-        "p",
-        "r",
-        "s",
-        "ş",
-        "t",
-        "u",
-        "ü",
-        "v",
-        "y",
-        "z",
-      ],
+      0: ["q", "w", "e", "r", "t", "y", "u", "ı", "o", "p", "ğ", "ü"],
+      1: ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ş", "i"],
+      2: ["z", "x", "c", "v", "b", "n", "m", "ö", "ç"],
     },
   },
 }

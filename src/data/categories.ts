@@ -93,9 +93,6 @@ export const categories: CategoriesData = {
         name: "Stranger Things",
       },
       {
-        name: "Game of Thrones",
-      },
-      {
         name: "Black Mirror",
       },
       {
@@ -109,9 +106,6 @@ export const categories: CategoriesData = {
       },
       {
         name: "Fargo",
-      },
-      {
-        name: "Better Call Saul",
       },
       {
         name: "Peaky Blinders",
@@ -369,13 +363,11 @@ export const categories: CategoriesData = {
       { name: "Bergen" },
       { name: "Müslüm" },
       { name: "Aile Arasında" },
-      { name: "Arif v 216" },
       { name: "Ailecek Şaşkınız" },
       { name: "GORA" },
       { name: "Mucize" },
       { name: "Eyvah Eyvah" },
       { name: "Vizontele" },
-      { name: "Celal ile Ceren" },
       { name: "Issız Adam" },
       { name: "Evim Sensin" },
       { name: "Organize İşler" },

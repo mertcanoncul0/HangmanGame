@@ -11,7 +11,7 @@ export function HomePlayCard() {
     <GameCard
       imagePath={"/images/logo.svg"}
       alt="Logo"
-      cardHeight={481}
+      cardHeight={510}
       w={263}
       h={130}
       open={true}
