@@ -451,6 +451,11 @@ body {
   align-items: center;
 }
 
+.lose .modal-menu-list {
+  gap: 34px !important;
+  margin-top: 0 !important;
+}
+
 .how-to-play-card h2 span {
   color: var(--blue);
   margin-right: 16px;
@@ -661,6 +666,7 @@ body {
     pointer-events: none;
   }
 }
+
 .modal-menu-list {
   gap: 48px;
   margin-top: 74px;
