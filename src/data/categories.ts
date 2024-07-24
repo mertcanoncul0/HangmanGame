@@ -120,9 +120,6 @@ export const categories: CategoriesData = {
         name: "Ozark",
       },
       {
-        name: "The Mandalorian",
-      },
-      {
         name: "Mindhunter",
       },
       {

@@ -12,7 +12,9 @@ export function HangmanWord({
     <div
       className={`hangman-wrapper ${
         splitSelectedWord.length === 1 ? "one-word" : ""
-      }`}
+      }
+        ${selectedWord.length > 10 ? "long-word" : ""}
+      `}
     >
       {splitSelectedWord.map((word, index) => (
         <div className="hangman-word-wrapper" key={index}>
