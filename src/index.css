@@ -313,7 +313,7 @@ body {
 }
 
 .keyboard-wrapper.tr .keyboard-key {
-  width: 30px;
+  width: 29px;
   height: 56px;
 
   @media (width <= 360px) {
@@ -348,7 +348,7 @@ body {
 
   &:not(.correct, .incorrect):hover {
     background-color: var(--blue);
-    color: var(--white);
+    color: white;
   }
 
   &.correct {
@@ -627,6 +627,20 @@ body {
   padding: 12px 48px;
   text-transform: uppercase;
   color: var(--white);
+  position: relative;
+
+  &:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 62px;
+    width: 100%;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.25);
+    z-index: 1;
+    pointer-events: none;
+  }
 }
 
 .modal-menu-link.quit {
@@ -697,6 +711,14 @@ body {
 .modal-menu-list {
   gap: 48px;
   margin-top: 74px;
+}
+
+.game-header-button:hover {
+  filter: brightness(1.2);
+}
+
+.header-button:hover {
+  filter: brightness(1.2);
 }
 
 @media (width >= 412px) {
