@@ -43,18 +43,17 @@ export function Game() {
     setGuessedLetters([])
     setIncorrectLetters([])
     setPlayable(true)
-    const a = getRandomWordFromCategory(slug, language)
-    setSelectedWord(a)
 
-    setCorrectLetters(getWordRandomKey(correctLetters, a))
+    const word = getRandomWordFromCategory(slug, language)
+    setSelectedWord(word)
+    setCorrectLetters(getWordRandomKey(word))
   }
-  console.log(correctLetters)
 
   useEffect(() => {
-    const a = getRandomWordFromCategory(slug, language)
+    const word = getRandomWordFromCategory(slug, language)
 
-    setSelectedWord(a)
-    setCorrectLetters(getWordRandomKey(correctLetters, a))
+    setSelectedWord(word)
+    setCorrectLetters(getWordRandomKey(word))
   }, [slug])
 
   if (!selectedWord) {
