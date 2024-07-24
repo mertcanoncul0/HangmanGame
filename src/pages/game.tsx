@@ -6,6 +6,7 @@ import {
   getCategoryNameBySlug,
   getFilteredWord,
   getRandomWordFromCategory,
+  getWordRandomKey,
 } from "../lib/helper"
 import { HangmanWord } from "../components/ui/hangman-word"
 import { useUserStore } from "../store/user"
@@ -42,11 +43,18 @@ export function Game() {
     setGuessedLetters([])
     setIncorrectLetters([])
     setPlayable(true)
-    setSelectedWord(getRandomWordFromCategory(slug, language))
+    const a = getRandomWordFromCategory(slug, language)
+    setSelectedWord(a)
+
+    setCorrectLetters(getWordRandomKey(correctLetters, a))
   }
+  console.log(correctLetters)
 
   useEffect(() => {
-    setSelectedWord(getRandomWordFromCategory(slug, language))
+    const a = getRandomWordFromCategory(slug, language)
+
+    setSelectedWord(a)
+    setCorrectLetters(getWordRandomKey(correctLetters, a))
   }, [slug])
 
   if (!selectedWord) {

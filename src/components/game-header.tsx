@@ -36,7 +36,7 @@ export function GameHeader({ categoryName }: GameHeaderProps) {
           </div>
           <img
             src="/images/icon-heart.svg"
-            alt="Healt Icon"
+            alt="Health Icon"
             className="health-icon"
             width={26}
             height={24}

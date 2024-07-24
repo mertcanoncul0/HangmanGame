@@ -89,7 +89,7 @@ export const data: { [key in LanguageCode]: LanguageData } = {
           slug: "movies",
         },
         {
-          name: "TV SHOWS",
+          name: "TV SERIES",
           slug: "tv-shows",
         },
         {
@@ -97,7 +97,7 @@ export const data: { [key in LanguageCode]: LanguageData } = {
           slug: "countries",
         },
         {
-          name: "CAPITAL CITIES",
+          name: "CAPITALS",
           slug: "capital-cities",
         },
         {
@@ -207,7 +207,7 @@ export const data: { [key in LanguageCode]: LanguageData } = {
           slug: "movies",
         },
         {
-          name: "TV ŞOVLARI",
+          name: "DİZİLER",
           slug: "tv-shows",
         },
         {
@@ -287,7 +287,7 @@ export const data: { [key in LanguageCode]: LanguageData } = {
       },
     },
     keyboard: {
-      0: ["q", "w", "e", "r", "t", "y", "u", "ı", "o", "p", "ğ", "ü"],
+      0: ["e", "r", "t", "y", "u", "ı", "o", "p", "ğ", "ü"],
       1: ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ş", "i"],
       2: ["z", "x", "c", "v", "b", "n", "m", "ö", "ç"],
     },

@@ -98,3 +98,14 @@ export function getFilteredWord(word: string): string {
 
   return result
 }
+
+export function getWordRandomKey(
+  correctLetters: string[],
+  word: string
+): string[] {
+  if (word.split(" ").length === 2) {
+    return [...correctLetters, word[0], word.split(" ")[1][0]]
+  }
+
+  return [...correctLetters, word[0]]
+}
