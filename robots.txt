@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /private/
-Allow: /
-Sitemap: https://mertcanoncul-hangman-game.vercel.app/sitemap.xml
