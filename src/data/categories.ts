@@ -34,9 +34,6 @@ export const categories: CategoriesData = {
         name: "Gladiator",
       },
       {
-        name: "Casablanca",
-      },
-      {
         name: "Psycho",
       },
       {
@@ -51,12 +48,7 @@ export const categories: CategoriesData = {
       {
         name: "The Matrix",
       },
-      {
-        name: "Goodfellas",
-      },
-      {
-        name: "Braveheart",
-      },
+
       {
         name: "Fight Club",
       },
@@ -80,9 +72,6 @@ export const categories: CategoriesData = {
       },
       {
         name: "Alien",
-      },
-      {
-        name: "Interstellar",
       },
     ],
     tvShows: [

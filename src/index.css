@@ -546,6 +546,7 @@ body {
   margin: 206px auto 0 auto;
   height: 445px !important;
 }
+
 .ss {
   animation: notShow 3s ease-in-out forwards;
   z-index: 10;

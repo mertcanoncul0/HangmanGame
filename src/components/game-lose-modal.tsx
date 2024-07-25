@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { data, LanguageCode } from "../data"
 import { useLanguageStore } from "../store/language"
 import { GameCard } from "./ui/game-card"
+import { useEffect, useState, useCallback } from "preact/hooks"
 import { DotLottieReact } from "@lottiefiles/dotlottie-react"
 
 type GameLoseModalProps = {
@@ -10,8 +11,37 @@ type GameLoseModalProps = {
   word: string
 }
 
+type DotLottieReactType = {
+  play: () => void
+  stop: () => void
+}
+
 export function GameLoseModal({ open, resetAll, word }: GameLoseModalProps) {
   const language = useLanguageStore((state) => state.language) as LanguageCode
+  const [dotLottie, setDotLottie] = useState<DotLottieReactType | null>(null) // DotLottieReact referansını tutacak state
+  const [playLottie, setPlayLottie] = useState(false) // Lottie animasyonunu kontrol eden state
+
+  useEffect(() => {
+    if (open) {
+      setPlayLottie(true)
+    } else {
+      setPlayLottie(false)
+    }
+  }, [open])
+
+  useEffect(() => {
+    if (dotLottie && playLottie) {
+      dotLottie.play()
+    } else if (dotLottie && !playLottie) {
+      dotLottie.stop()
+    }
+  }, [playLottie, dotLottie])
+
+  const dotLottieRefCallback = useCallback((node: DotLottieReactType) => {
+    if (node !== null) {
+      setDotLottie(node)
+    }
+  }, [])
 
   return (
     <div className={`overlay game-modal lose ${open ? "show" : ""}`}>
@@ -26,8 +56,14 @@ export function GameLoseModal({ open, resetAll, word }: GameLoseModalProps) {
         <h2 className="game-card-word">
           {language === "tr" ? "Kelime" : "Word"}: <span>"{word}"</span>
         </h2>
+
         <div className={open ? "ss" : ""}>
-          <DotLottieReact src="/lottie/lose.json" loop autoplay />
+          <DotLottieReact
+            src="/lottie/lose.json"
+            dotLottieRefCallback={dotLottieRefCallback}
+            loop={true}
+            autoplay={false}
+          />
         </div>
 
         <ul className="modal-menu-list">
