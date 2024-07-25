@@ -52,9 +52,9 @@ export function GameWinModal({ open, resetAll }: GameWinModalProps) {
         w={186}
         h={113}
       >
-        <div className={open ? "ss" : ""}>
+        <div className={open ? "ss congratulations" : ""}>
           <DotLottieReact
-            src="/lottie/tebrikler.json"
+            src="/lottie/congratulations.json"
             dotLottieRefCallback={dotLottieRefCallback}
             loop={true}
             autoplay={false}

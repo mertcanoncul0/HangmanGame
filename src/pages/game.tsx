@@ -93,8 +93,6 @@ export function Game() {
         e.key.length === 1 &&
         /[a-zA-ZçğıöşüÇĞİÖŞÜ]/.test(e.key)
       ) {
-        console.log(e.key)
-
         checkCorrectLetters(e.key.toLocaleLowerCase(language))
         checkIncorrectLetters(e.key.toLocaleLowerCase(language))
         checkGuessLetters(e.key.toLocaleLowerCase(language))
