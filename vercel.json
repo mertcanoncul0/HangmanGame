@@ -1,3 +1,12 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" },
+    { "source": "/robots.txt", "destination": "/public/robots.txt" }
+  ],
+  "headers": [
+    {
+      "source": "/public/robots.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain" }]
+    }
+  ]
 }
