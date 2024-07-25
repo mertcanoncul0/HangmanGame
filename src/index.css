@@ -528,7 +528,7 @@ body {
 
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s, visibility 0.5s, transform 0.5s ease-in-out;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s ease-in-out;
   transform: translateX(-300px);
 }
 
