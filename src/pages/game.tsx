@@ -17,7 +17,6 @@ import { GameKeyboard } from "../components/game-keyboard"
 
 export function loader({ params }: { params: object }) {
   const { slug } = params as { slug: string }
-
   return {
     slug,
   }
@@ -37,6 +36,11 @@ export function Game() {
     setPlayable,
   } = useUserStore((state) => state)
   const [selectedWord, setSelectedWord] = useState("")
+  const [modalShow, setModalShow] = useState(false)
+
+  setTimeout(() => {
+    setModalShow(true)
+  }, 500)
 
   function resetAll() {
     setCorrectLetters([])
@@ -48,7 +52,6 @@ export function Game() {
     setSelectedWord(word)
     setCorrectLetters(getWordRandomKey(word))
   }
-
   useEffect(() => {
     const word = getRandomWordFromCategory(slug, language)
 
@@ -126,16 +129,20 @@ export function Game() {
         onClick={handleClick}
       />
 
-      <GameWinModal
-        open={correctLetters.length === getFilteredWord(selectedWord).length}
-        resetAll={resetAll}
-      />
+      {modalShow && (
+        <GameWinModal
+          open={correctLetters.length === getFilteredWord(selectedWord).length}
+          resetAll={resetAll}
+        />
+      )}
 
-      <GameLoseModal
-        open={incorrectLetters.length >= 7}
-        resetAll={resetAll}
-        word={selectedWord}
-      />
+      {modalShow && (
+        <GameLoseModal
+          open={incorrectLetters.length >= 7}
+          resetAll={resetAll}
+          word={selectedWord}
+        />
+      )}
     </>
   )
 }

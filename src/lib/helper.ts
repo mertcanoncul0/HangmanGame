@@ -65,6 +65,7 @@ export function getCategoriesKey(str: string): CategoriesKey {
 }
 
 const shuffledIndices: Map<string, number[]> = new Map()
+let previousCategory: string | null = null
 
 /**
  * Get a random word from the specified category and language.
@@ -86,12 +87,31 @@ export function getRandomWordFromCategory(
     shuffledIndices.set(category, indices)
   }
 
-  const randomIndex = indices.pop() as number
+  let randomIndex: number | undefined
+  let name: string
+
+  do {
+    randomIndex = indices.pop()
+    if (
+      randomIndex === undefined ||
+      randomIndex < 0 ||
+      randomIndex >= arr.length
+    ) {
+      throw new Error(
+        language === "tr"
+          ? "Rastgele indeks sınırlar dışında"
+          : "Random index out of bounds"
+      )
+    }
+
+    name = arr[randomIndex]?.name.toLocaleLowerCase(language) as string
+  } while (name === previousCategory)
+
+  previousCategory = name
+
   if (indices.length === 0) {
     shuffledIndices.delete(category)
   }
-
-  const name = arr[randomIndex].name.toLocaleLowerCase(language) as string
 
   return name
 }

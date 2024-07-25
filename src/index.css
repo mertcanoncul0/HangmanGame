@@ -552,6 +552,65 @@ body {
   z-index: 10;
 }
 
+#error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #333;
+  text-align: center;
+
+  & > div {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+
+#error-page h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #ff6f61;
+}
+
+#error-page p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+#error-page button {
+  padding: 8px 20px;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff6f61;
+  color: white;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#error-page button:hover {
+  background-color: #e55b50;
+}
+
+#error-page a {
+  font-size: 1.4rem;
+  color: #ff6f61;
+  text-decoration: none;
+  border: 2px solid #ff6f61;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 10px;
+}
+
+#error-page a:hover {
+  background-color: #ff6f61;
+  color: white;
+}
+
 @keyframes notShow {
   0% {
     position: absolute;
@@ -582,8 +641,8 @@ body {
   left: 0;
   right: 0;
   margin-inline: auto;
-  width: 263px;
-  height: 130px;
+  width: 223px;
+  height: 110px;
 }
 
 .game-card .play-button {
@@ -951,8 +1010,9 @@ body {
 
   .game-card .logo {
     position: absolute;
-    width: 373px;
-    height: 185px;
+    width: 351px;
+    height: 150px;
+
     top: -18%;
   }
 
@@ -1118,6 +1178,33 @@ body {
   .health-icon {
     width: 54px;
     height: 49px;
+  }
+
+  #error-page {
+    & > div {
+      background-color: #f4f4f4;
+      padding: 40px;
+      width: 500px;
+      height: 400px;
+      border-radius: 20px;
+    }
+  }
+
+  #error-page h1 {
+    font-size: 5rem;
+  }
+
+  #error-page p {
+    font-size: 1.8rem;
+  }
+
+  #error-page button {
+    padding: 7px 20px;
+    font-size: 2rem;
+  }
+
+  #error-page a {
+    font-size: 2rem;
   }
 }
 
