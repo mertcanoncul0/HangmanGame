@@ -528,7 +528,7 @@ body {
 
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s, transform 0.3s ease-in-out;
+  transition: opacity 0.5s, visibility 0.5s, transform 0.5s ease-in-out;
   transform: translateX(-300px);
 }
 
@@ -545,6 +545,28 @@ body {
 .lose .game-card {
   margin: 206px auto 0 auto;
   height: 445px !important;
+}
+.ss {
+  animation: notShow 3s ease-in-out forwards;
+  z-index: 10;
+}
+
+@keyframes notShow {
+  0% {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+  }
+  90% {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+  }
+  100% {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .game-card.show {
@@ -1036,7 +1058,7 @@ body {
     border-radius: 18px;
     width: 60px;
     height: 76px;
-
+    cursor: pointer;
     --size: 42px;
   }
 

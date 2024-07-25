@@ -121,6 +121,7 @@ export function Game() {
         selectedWord={selectedWord}
         correctLetters={correctLetters}
       />
+
       <GameKeyboard
         correctLetters={correctLetters}
         incorrectLetters={incorrectLetters}

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { data, LanguageCode } from "../data"
 import { useLanguageStore } from "../store/language"
 import { GameCard } from "./ui/game-card"
+import { DotLottieReact } from "@lottiefiles/dotlottie-react"
 
 type GameLoseModalProps = {
   open: boolean
@@ -25,6 +26,10 @@ export function GameLoseModal({ open, resetAll, word }: GameLoseModalProps) {
         <h2 className="game-card-word">
           {language === "tr" ? "Kelime" : "Word"}: <span>"{word}"</span>
         </h2>
+        <div className={open ? "ss" : ""}>
+          <DotLottieReact src="/lottie/lose.json" loop autoplay />
+        </div>
+
         <ul className="modal-menu-list">
           <li className="modal-menu-item" onClick={resetAll}>
             <Link className="modal-menu-link heading-sm" to="">

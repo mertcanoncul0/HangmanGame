@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@lottiefiles/dotlottie-react':
+        specifier: ^0.8.3
+        version: 0.8.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       preact:
         specifier: ^10.22.1
         version: 10.22.1
@@ -303,6 +306,15 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
+  '@lottiefiles/dotlottie-react@0.8.3':
+    resolution: {integrity: sha512-JjCz/q3cZ5UQG490hy4n9QruLU+SWujoam9HBWujZlRZyfDcnKmxPlaJt9bFqOJ86OGs23P/9M9QHJbqwor2dg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  '@lottiefiles/dotlottie-web@0.29.2':
+    resolution: {integrity: sha512-2rzm4SJ6MZPbZBjVLI8zuLDxRDvWvYcri8SF9TY4ifgZn2M+6JsQbXwl5P6cDdMctfU78kJvENOXGAO0jKsBTQ==}
+
   '@preact/preset-vite@2.9.0':
     resolution: {integrity: sha512-B9yVT7AkR6owrt84K3pLNyaKSvlioKdw65VqE/zMiR6HMovPekpsrwBNs5DJhBFEd5cvLMtCjHNHZ9P7Oblveg==}
     peerDependencies:
@@ -456,6 +468,10 @@ packages:
   css-what@6.1.0:
     resolution: {integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==}
     engines: {node: '>= 6'}
+
+  debounce@2.1.0:
+    resolution: {integrity: sha512-OkL3+0pPWCqoBc/nhO9u6TIQNTK44fnBnzuVtJAbp13Naxw9R6u21x+8tVTka87AhDZ3htqZ2pSSsZl9fqL2Wg==}
+    engines: {node: '>=18'}
 
   debug@4.3.5:
     resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
@@ -974,6 +990,15 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@lottiefiles/dotlottie-react@0.8.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@lottiefiles/dotlottie-web': 0.29.2
+      debounce: 2.1.0
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
+  '@lottiefiles/dotlottie-web@0.29.2': {}
+
   '@preact/preset-vite@2.9.0(@babel/core@7.24.9)(preact@10.22.1)(vite@5.3.4)':
     dependencies:
       '@babel/code-frame': 7.24.7
@@ -1114,6 +1139,8 @@ snapshots:
       nth-check: 2.1.1
 
   css-what@6.1.0: {}
+
+  debounce@2.1.0: {}
 
   debug@4.3.5:
     dependencies:
