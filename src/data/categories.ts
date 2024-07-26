@@ -375,7 +375,6 @@ export const categories: CategoriesData = {
       { name: "Kül" },
       { name: "Aşk Mevsimi" },
       { name: "Kardeş Takımı" },
-      { name: "3391 Kilometre" },
       { name: "Mutluyuz" },
       { name: "Ölümlü Dünya" },
       { name: "Bihter" },
