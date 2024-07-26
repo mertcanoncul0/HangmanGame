@@ -2,45 +2,25 @@ import { Link } from "react-router-dom"
 import { data, LanguageCode } from "../data"
 import { useLanguageStore } from "../store/language"
 import { GameCard } from "./ui/game-card"
-import { useCallback, useEffect, useState } from "preact/hooks"
-import { DotLottieReact } from "@lottiefiles/dotlottie-react"
+import Congratulations from "../../public/lottie/congratulations.json"
+import Lottie from "react-lottie"
 
 type GameWinModalProps = {
   open: boolean
   resetAll: () => void
 }
 
-type DotLottieReactType = {
-  play: () => void
-  stop: () => void
-}
-
 export function GameWinModal({ open, resetAll }: GameWinModalProps) {
   const language = useLanguageStore((state) => state.language) as LanguageCode
-  const [dotLottie, setDotLottie] = useState<DotLottieReactType | null>(null) // DotLottieReact referansını tutacak state
-  const [playLottie, setPlayLottie] = useState(false) // Lottie animasyonunu kontrol eden state
-
-  useEffect(() => {
-    if (open) {
-      setPlayLottie(true)
-    } else {
-      setPlayLottie(false)
-    }
-  }, [open])
-
-  useEffect(() => {
-    if (dotLottie && playLottie) {
-      dotLottie.play()
-    } else if (dotLottie && !playLottie) {
-      dotLottie.stop()
-    }
-  }, [playLottie, dotLottie])
-
-  const dotLottieRefCallback = useCallback((node: DotLottieReactType) => {
-    if (node !== null) {
-      setDotLottie(node)
-    }
-  }, [])
+  const defaultOptions = {
+    loop: true,
+    autoplay: false,
+    playState: open ? "play" : "stop",
+    animationData: Congratulations,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  }
 
   return (
     <div className={`overlay game-modal win ${open ? "show" : ""}`}>
@@ -52,12 +32,12 @@ export function GameWinModal({ open, resetAll }: GameWinModalProps) {
         w={186}
         h={113}
       >
-        <div className={open ? "ss congratulations" : ""}>
-          <DotLottieReact
-            src="/lottie/congratulations.json"
-            dotLottieRefCallback={dotLottieRefCallback}
-            loop={true}
-            autoplay={false}
+        <div className={open ? "lottie-animation" : ""}>
+          <Lottie
+            options={defaultOptions}
+            height={800}
+            width={800}
+            speed={1.6}
           />
         </div>
 
@@ -67,13 +47,21 @@ export function GameWinModal({ open, resetAll }: GameWinModalProps) {
               {language === "en" ? "Play again" : "Tekrar oyna"}
             </button>
           </li>
-          <li className="modal-menu-item" onClick={resetAll}>
-            <Link className="modal-menu-link heading-sm" to="/pick-category">
+          <li className="modal-menu-item">
+            <Link
+              className="modal-menu-link heading-sm"
+              to="/pick-category"
+              onClick={resetAll}
+            >
               {language === "en" ? "New category" : "Yeni kategori"}
             </Link>
           </li>
-          <li className="modal-menu-item" onClick={resetAll}>
-            <Link className="modal-menu-link heading-sm quit" to="/">
+          <li className="modal-menu-item">
+            <Link
+              className="modal-menu-link heading-sm quit"
+              to="/"
+              onClick={resetAll}
+            >
               {language === "en" ? "Quit" : "Çıkış yap"}
             </Link>
           </li>

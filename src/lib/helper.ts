@@ -147,7 +147,7 @@ export function getFilteredWord(word: string): string {
  * @param word - The word or phrase to extract letters from.
  * @returns An array with the first letter of each word if there are two words, otherwise just the first letter.
  */
-export function getWordRandomKey(word: string): string[] {
+export function getWordFirstKey(word: string): string[] {
   if (word.split(" ").length === 2) {
     if (word[0] === word.split(" ")[1][0]) return [word[0]]
 

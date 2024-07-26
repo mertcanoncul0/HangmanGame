@@ -6,7 +6,7 @@ import {
   getCategoryNameBySlug,
   getFilteredWord,
   getRandomWordFromCategory,
-  getWordRandomKey,
+  getWordFirstKey,
 } from "../lib/helper"
 import { HangmanWord } from "../components/ui/hangman-word"
 import { useUserStore } from "../store/user"
@@ -14,6 +14,11 @@ import { useEffect, useState } from "preact/hooks"
 import { GameWinModal } from "../components/game-win-modal"
 import { GameLoseModal } from "../components/game-lose-modal"
 import { GameKeyboard } from "../components/game-keyboard"
+
+import Correct from "/sounds/start.mp3"
+import Winning from "/sounds/winning.mp3"
+import OverGame from "/sounds/game-over.mp3"
+import Negative from "/sounds/negative.mp3"
 
 export function loader({ params }: { params: object }) {
   const { slug } = params as { slug: string }
@@ -23,6 +28,11 @@ export function loader({ params }: { params: object }) {
 }
 
 export function Game() {
+  const voice = new Audio(Correct)
+  const winning = new Audio(Winning)
+  const overGame = new Audio(OverGame)
+  const negative = new Audio(Negative)
+
   const { slug } = useLoaderData() as { slug: string }
   const language = useLanguageStore((state) => state.language) as LanguageCode
   const {
@@ -36,11 +46,6 @@ export function Game() {
     setPlayable,
   } = useUserStore((state) => state)
   const [selectedWord, setSelectedWord] = useState("")
-  const [modalShow, setModalShow] = useState(false)
-
-  setTimeout(() => {
-    setModalShow(true)
-  }, 500)
 
   function resetAll() {
     setCorrectLetters([])
@@ -50,13 +55,14 @@ export function Game() {
 
     const word = getRandomWordFromCategory(slug, language)
     setSelectedWord(word)
-    setCorrectLetters(getWordRandomKey(word))
+    setCorrectLetters(getWordFirstKey(word))
   }
+
   useEffect(() => {
     const word = getRandomWordFromCategory(slug, language)
 
     setSelectedWord(word)
-    setCorrectLetters(getWordRandomKey(word))
+    setCorrectLetters(getWordFirstKey(word))
   }, [slug])
 
   if (!selectedWord) {
@@ -66,11 +72,15 @@ export function Game() {
   function checkCorrectLetters(key: string) {
     if (selectedWord.includes(key) && !correctLetters.includes(key)) {
       setCorrectLetters([...correctLetters, key])
+      setTimeout(() => {
+        voice.play()
+      }, 225)
     }
   }
 
   function checkIncorrectLetters(key: string) {
     if (!selectedWord.includes(key) && !incorrectLetters.includes(key)) {
+      negative.play()
       setIncorrectLetters([...incorrectLetters, key])
     }
   }
@@ -103,10 +113,12 @@ export function Game() {
     }
 
     if (correctLetters.length === getFilteredWord(selectedWord).length) {
+      winning.play()
       setPlayable(false)
     }
 
     if (incorrectLetters.length >= 7) {
+      overGame.play()
       setPlayable(false)
     }
 
@@ -129,20 +141,16 @@ export function Game() {
         onClick={handleClick}
       />
 
-      {modalShow && (
-        <GameWinModal
-          open={correctLetters.length === getFilteredWord(selectedWord).length}
-          resetAll={resetAll}
-        />
-      )}
+      <GameWinModal
+        open={correctLetters.length === getFilteredWord(selectedWord).length}
+        resetAll={resetAll}
+      />
 
-      {modalShow && (
-        <GameLoseModal
-          open={incorrectLetters.length >= 7}
-          resetAll={resetAll}
-          word={selectedWord}
-        />
-      )}
+      <GameLoseModal
+        open={incorrectLetters.length >= 7}
+        resetAll={resetAll}
+        word={selectedWord}
+      />
     </>
   )
 }

@@ -16,13 +16,22 @@ export function GameCard({
   className = "",
   cardHeight,
   open,
+  w,
+  h,
 }: GameCardProps) {
   return (
     <div
       className={`game-card ${open ? "show" : ""} ${className}`}
       style={{ height: cardHeight }}
     >
-      <img src={imagePath} alt={alt} title={alt} className="logo" />
+      <img
+        src={imagePath}
+        alt={alt}
+        title={alt}
+        width={w}
+        height={h}
+        className="logo"
+      />
 
       {children}
     </div>

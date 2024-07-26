@@ -547,9 +547,11 @@ body {
   height: 445px !important;
 }
 
-.ss {
-  animation: notShow 1.8s ease-in-out forwards;
+.lottie-animation {
+  animation: notShow 2.6s ease-in-out forwards;
   z-index: 10;
+  width: 800px;
+  height: 800px;
 }
 
 #error-page {
@@ -614,18 +616,15 @@ body {
 @keyframes notShow {
   0% {
     position: absolute;
-    width: 600px;
-    height: 600px;
-  }
-  90% {
-    position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 800px;
+    z-index: 10;
   }
   100% {
     position: absolute;
-    opacity: 0;
-    visibility: hidden;
+    width: 800px;
+    height: 800px;
+    display: none;
   }
 }
 
