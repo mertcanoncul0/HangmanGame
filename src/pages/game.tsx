@@ -15,10 +15,10 @@ import { GameWinModal } from "../components/game-win-modal"
 import { GameLoseModal } from "../components/game-lose-modal"
 import { GameKeyboard } from "../components/game-keyboard"
 
-import Correct from "/sounds/start.mp3"
-import Winning from "/sounds/winning.mp3"
-import OverGame from "/sounds/game-over.mp3"
-import Negative from "/sounds/negative.mp3"
+// import Correct from "/sounds/start.mp3"
+// import Winning from "/sounds/winning.mp3"
+// import OverGame from "/sounds/game-over.mp3"
+// import Negative from "/sounds/negative.mp3"
 
 export function loader({ params }: { params: object }) {
   const { slug } = params as { slug: string }
@@ -28,10 +28,10 @@ export function loader({ params }: { params: object }) {
 }
 
 export function Game() {
-  const voice = new Audio(Correct)
-  const winning = new Audio(Winning)
-  const overGame = new Audio(OverGame)
-  const negative = new Audio(Negative)
+  // const voice = new Audio(Correct)
+  // const winning = new Audio(Winning)
+  // const overGame = new Audio(OverGame)
+  // const negative = new Audio(Negative)
 
   const { slug } = useLoaderData() as { slug: string }
   const language = useLanguageStore((state) => state.language) as LanguageCode
@@ -73,14 +73,14 @@ export function Game() {
     if (selectedWord.includes(key) && !correctLetters.includes(key)) {
       setCorrectLetters([...correctLetters, key])
       setTimeout(() => {
-        voice.play()
+        // voice.play()
       }, 225)
     }
   }
 
   function checkIncorrectLetters(key: string) {
     if (!selectedWord.includes(key) && !incorrectLetters.includes(key)) {
-      negative.play()
+      // negative.play()
       setIncorrectLetters([...incorrectLetters, key])
     }
   }
@@ -113,12 +113,12 @@ export function Game() {
     }
 
     if (correctLetters.length === getFilteredWord(selectedWord).length) {
-      winning.play()
+      // winning.play()
       setPlayable(false)
     }
 
     if (incorrectLetters.length >= 7) {
-      overGame.play()
+      // overGame.play()
       setPlayable(false)
     }
 
