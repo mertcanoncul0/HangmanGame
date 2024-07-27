@@ -4,6 +4,7 @@ import { useLanguageStore } from "../store/language"
 import { GameCard } from "./ui/game-card"
 import Lose from "../../public/lottie/lose.json"
 import Lottie from "react-lottie"
+import { useEffect, useState } from "preact/hooks"
 
 type GameLoseModalProps = {
   open: boolean
@@ -13,11 +14,18 @@ type GameLoseModalProps = {
 
 export function GameLoseModal({ open, resetAll, word }: GameLoseModalProps) {
   const language = useLanguageStore((state) => state.language) as LanguageCode
+  const [showLottie, setShowLottie] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowLottie(open)
+    }, 125)
+  }, [open])
 
   const defaultOptions = {
     loop: true,
     autoplay: false,
-    playState: open ? "play" : "stop",
+    playState: showLottie ? "play" : "stop",
     animationData: Lose,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
@@ -38,13 +46,8 @@ export function GameLoseModal({ open, resetAll, word }: GameLoseModalProps) {
           {language === "tr" ? "Kelime" : "Word"}: <span>"{word}"</span>
         </h2>
 
-        <div className={open ? "lottie-animation" : ""}>
-          <Lottie
-            options={defaultOptions}
-            height={800}
-            width={800}
-            speed={1.6}
-          />
+        <div className={showLottie ? "lottie-animation lose" : ""}>
+          <Lottie options={defaultOptions} speed={1.2} />
         </div>
 
         <ul className="modal-menu-list">

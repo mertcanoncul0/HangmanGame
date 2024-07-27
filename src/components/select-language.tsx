@@ -1,5 +1,7 @@
 import { useLanguageStore } from "../store/language"
 import { GameCard } from "./ui/game-card"
+import TrSvg from "/images/tr.svg"
+import EnSvg from "/images/en.svg"
 
 export function SelectLanguage() {
   const setLanguage = useLanguageStore((state) => state.setLanguage)
@@ -25,14 +27,14 @@ export function SelectLanguage() {
             onClick={() => handleLanguageChange("tr")}
             title={"Türkçe"}
           >
-            <img src="images/tr.svg" alt="Turkish Flag" class="flag-icon" />
+            <img src={TrSvg} alt="Turkish Flag" class="flag-icon" />
           </button>
           <button
             class="language-option-button"
             onClick={() => handleLanguageChange("en")}
             title={"English"}
           >
-            <img src="images/en.svg" alt="English Flag" class="flag-icon" />
+            <img src={EnSvg} alt="English Flag" class="flag-icon" />
           </button>
         </div>
       </GameCard>

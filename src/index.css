@@ -548,10 +548,39 @@ body {
 }
 
 .lottie-animation {
-  animation: notShow 2.6s ease-in-out forwards;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
-  width: 800px;
-  height: 800px;
+  width: 650px !important;
+  height: 650px !important;
+  animation: notShow 2s ease-in-out forwards;
+
+  &.lose {
+    animation: notLoseShow 2s ease-in-out forwards;
+    width: 400px !important;
+    height: 400px !important;
+  }
+}
+@keyframes notLoseShow {
+  0% {
+    z-index: 1;
+    left: 50%;
+  }
+  100% {
+    left: 38%;
+    visibility: hidden;
+  }
+}
+
+@keyframes notShow {
+  0% {
+    z-index: 1;
+  }
+  100% {
+    visibility: hidden;
+  }
 }
 
 #error-page {
@@ -611,21 +640,6 @@ body {
 #error-page a:hover {
   background-color: #ff6f61;
   color: white;
-}
-
-@keyframes notShow {
-  0% {
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    z-index: 10;
-  }
-  100% {
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    display: none;
-  }
 }
 
 .game-card.show {
@@ -957,6 +971,10 @@ body {
 }
 
 @media (width >= 768px) {
+  .lottie-animation {
+    width: 800px !important;
+    height: 800px !important;
+  }
   .language-options {
     gap: 20px;
   }
@@ -1208,6 +1226,11 @@ body {
 }
 
 @media (width >= 1124px) {
+  .lottie-animation {
+    width: 1200px !important;
+    height: 1200px !important;
+  }
+
   body {
     background-image: url("/images/background-desktop.svg");
   }
