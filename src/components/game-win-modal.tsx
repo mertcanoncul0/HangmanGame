@@ -3,7 +3,6 @@ import { data, LanguageCode } from "../data"
 import { useLanguageStore } from "../store/language"
 import { GameCard } from "./ui/game-card"
 import { useCallback, useEffect, useState } from "preact/hooks"
-import { DotLottieReact } from "@lottiefiles/dotlottie-react"
 
 type GameWinModalProps = {
   open: boolean
