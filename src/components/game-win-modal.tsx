@@ -4,7 +4,6 @@ import { useLanguageStore } from "../store/language"
 import { GameCard } from "./ui/game-card"
 import Congratulations from "../../public/lottie/congratulations.json"
 import Lottie from "react-lottie"
-import { useEffect, useState } from "preact/hooks"
 
 type GameWinModalProps = {
   open: boolean
@@ -13,18 +12,11 @@ type GameWinModalProps = {
 
 export function GameWinModal({ open, resetAll }: GameWinModalProps) {
   const language = useLanguageStore((state) => state.language) as LanguageCode
-  const [showLottie, setShowLottie] = useState(false)
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowLottie(open)
-    }, 125)
-  }, [open])
 
   const defaultOptions = {
     loop: true,
     autoplay: false,
-    playState: showLottie ? "play" : "stop",
+    playState: open ? "play" : "stop",
     animationData: Congratulations,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
@@ -41,7 +33,7 @@ export function GameWinModal({ open, resetAll }: GameWinModalProps) {
         w={186}
         h={113}
       >
-        <div className={showLottie ? "lottie-animation" : ""}>
+        <div className={open ? "lottie-animation" : ""}>
           <Lottie options={defaultOptions} speed={1.2} />
         </div>
 
